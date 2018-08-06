@@ -11,6 +11,7 @@
 #define SPACE_HPP
 #include <string>
 #include <iostream>
+#include <algorithm>
 #include "Player.hpp"
 
 
@@ -39,7 +40,7 @@ public:
 
     virtual ~Space();
     virtual void action(Player* player) = 0;
-    virtual void fight(Player* player) = 0;
+    virtual void fight(Player* player);
 
     void setUp(Space* up) {m_up = up;}
     void setDown(Space* down) {m_down = down;}

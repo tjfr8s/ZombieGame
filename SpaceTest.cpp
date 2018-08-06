@@ -8,5 +8,15 @@ int main()
     testPlayer.die();
     std::cout << "is ded: " << testPlayer.isDead() << std::endl;
 
+    std::cout << "player has knife? " << testPlayer.hasItem(Player::KNIFE) <<
+        std::endl;
+    testPlayer.addItem(Player::KNIFE);
+    std::cout << "player has knife? " << testPlayer.hasItem(Player::KNIFE) <<
+        std::endl;
+    std::cout << "player has health? " << testPlayer.hasItem(Player::HEALTH) <<
+        std::endl;
+
+
+
     return 0;
 }

@@ -19,6 +19,9 @@ public:
     ~Player();
     void die();
     bool isDead();
+    void addItem(ItemType item);
+    bool hasItem(ItemType item);
+    void removeItem(ItemType item);
 private:
     int m_health;
     std::vector<ItemType> m_bag;

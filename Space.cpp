@@ -30,3 +30,7 @@ Space::~Space()
 {
 }
 
+void Space::fight(Player* player)
+{
+}
+

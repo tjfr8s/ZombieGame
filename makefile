@@ -17,7 +17,7 @@ INCS = $(shell find . -maxdepth 1 -type f -name \*.$(INCEXT))
 ZombieGame: $(OBJS)
 	$(CXX) $^ -o ZombieGame
 
-SpaceTest: Space.o SpaceTest.o
+SpaceTest: Space.o Player.o SpaceTest.o
 	$(CXX) $^ -o SpaceTest
 
 

@@ -41,6 +41,23 @@ public:
     virtual void action(Player* player) = 0;
     virtual void fight(Player* player) = 0;
 
+    void setUp(Space* up) {m_up = up;}
+    void setDown(Space* down) {m_down = down;}
+    void setLeft(Space* left) {m_left = left;}
+    void setRight(Space* right) {m_right = right;}
+    void toggleZombie() {m_hasZombie = !m_hasZombie;}
+
+
+    Space* getUp() {return m_up;}
+    Space* getDown() {return m_down;}
+    Space* getLeft() {return m_left;}
+    Space* getRight() {return m_right;}
+    bool hasZombie() {return m_hasZombie;}
+
+
+
+
+
 
 
 };

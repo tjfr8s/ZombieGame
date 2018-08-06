@@ -11,18 +11,8 @@
 #define SPACE_HPP
 #include <string>
 #include <iostream>
+#include "Player.hpp"
 
-namespace Player
-{
-    enum ItemType
-    {
-        KNIFE,
-        KEY,
-        HEALTH,
-        ANTIDOTE,
-        EMPTY
-    };
-}
 
 
 class Space

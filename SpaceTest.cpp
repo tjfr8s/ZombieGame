@@ -1,6 +1,7 @@
 #include "Space.hpp"
 #include "Player.hpp"
 #include "General.hpp"
+#include "Kitchen.hpp"
 
 int main()
 {
@@ -55,6 +56,24 @@ int main()
     std::cout << "testPlayer has knife? " << 
         testPlayer.hasItem(Player::KNIFE) << std::endl;
 
+    space.action(&testPlayer);
+
+
+
+    std::cout << "\n\nZombie test 1 **************************\n\n";
+    Kitchen spaceK("test", false, false, nullptr, nullptr, nullptr, 
+            nullptr);
+
+    testPlayer.removeItem(Player::KNIFE);
+    testPlayer.setIsDead(false);
+
+    std::cout << "testPlayer has knife? " << 
+        testPlayer.hasItem(Player::KNIFE) << std::endl;
+
+    spaceK.action(&testPlayer);
+
+    std::cout << "testPlayer has knife? " << 
+        testPlayer.hasItem(Player::KNIFE) << std::endl;
 
     return 0;
 }

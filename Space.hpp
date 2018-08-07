@@ -18,6 +18,7 @@
 
 class Space
 {
+protected:
     std::string m_name;
     bool m_hasZombie;
     bool m_isLocked;

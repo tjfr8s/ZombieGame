@@ -14,4 +14,7 @@ General::General(std::string name,
 
 void General::action(Player* player)
 {
+    std::vector<std::string> menuOptions;
+    menuOptions.push_back("Leave");
+    getMenu(menuOptions);
 }

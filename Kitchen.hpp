@@ -1,24 +1,26 @@
-#ifndef GENERAL_HPP
-#define GENERAL_HPP
+#ifndef KITCHEN_HPP
+#define KITCHEN_HPP
 #include "Space.hpp"
 #include "Player.hpp"
 #include "Menu.hpp"
+#include <vector>
+#include <string>
 
 
-class General : public Space
+
+class Kitchen : public Space
 {
 public:
     
-    General(std::string name,
+    Kitchen(std::string name,
           bool hasZombie,
           bool isLocked,
-          Player::ItemType item,
           Space* up,
           Space* down,
           Space* left,
           Space* right);
 
-    virtual ~General(){} 
+    virtual ~Kitchen(){} 
     virtual void action(Player* player);
 
 };

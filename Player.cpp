@@ -25,7 +25,7 @@ void Player::addItem(Player::ItemType item)
 bool Player::hasItem(Player::ItemType item)
 {
     bool hasItem(false);
-    int count = 0;
+
     auto found = find(m_bag.begin(), m_bag.end(), item);
     if(found != m_bag.end())
     {

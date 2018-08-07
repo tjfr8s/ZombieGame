@@ -23,7 +23,7 @@ int main()
         std::endl;
 
     std::cout << "\n\nZombie test 1 **************************\n\n";
-    General space("test", true, false, Player::EMPTY, nullptr, nullptr, nullptr, 
+    General space("test", true, false, Player::KEY, nullptr, nullptr, nullptr, 
             nullptr);
 
     testPlayer.addItem(Player::KNIFE);
@@ -56,8 +56,18 @@ int main()
     std::cout << "testPlayer has knife? " << 
         testPlayer.hasItem(Player::KNIFE) << std::endl;
 
+
+
+    testPlayer.removeItem(Player::KEY);
+    testPlayer.setIsDead(false);
+
+    std::cout << "testPlayer has key? " << 
+        testPlayer.hasItem(Player::KEY) << std::endl;
+
     space.action(&testPlayer);
 
+    std::cout << "testPlayer has key? " << 
+        testPlayer.hasItem(Player::KEY) << std::endl;
 
 
     std::cout << "\n\nZombie test 1 **************************\n\n";

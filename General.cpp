@@ -14,7 +14,34 @@ General::General(std::string name,
 
 void General::action(Player* player)
 {
-    std::vector<std::string> menuOptions;
-    menuOptions.push_back("Leave");
-    getMenu(menuOptions);
+    int choice(0);
+    std::vector<std::string> options;
+    options.push_back("Leave");
+
+    while(choice != 1)
+    {
+        // Add menu options based on status of Kitchen object.
+        if(m_item == Player::KEY)
+        {
+            options.push_back("Pick up key");
+        }
+
+        choice = getMenu(options);
+
+        switch(choice)
+        {
+            case 1:
+                break;
+            case 2:
+                player->addItem(Player::KEY);
+                m_item = Player::EMPTY;        
+                break;
+        }
+        // Remove all options accept for leave 
+        for(int i = 0; i < static_cast<int>(options.size() - 1); i++)
+        {
+            options.pop_back();
+        }
+    }
+
 }

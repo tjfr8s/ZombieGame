@@ -1,6 +1,6 @@
 
 CXX = g++
-CXXFLAGS = -std=c++0x
+CXXFLAGS = -std=c++11
 CXXFLAGS += -Wall
 CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
@@ -17,27 +17,22 @@ INCS = $(shell find . -maxdepth 1 -type f -name \*.$(INCEXT))
 ZombieGame: $(OBJS)
 	$(CXX) $^ -o ZombieGame
 
-SpaceTest: Space.o Player.o SpaceTest.o General.o Menu.o IntegerValidation.o \
-	Kitchen.o Bedroom.o Attic.o
-	$(CXX) $^ -o SpaceTest
-
-ZombieGameTest: Space.o Player.o ZombieGameTest.o General.o Menu.o IntegerValidation.o \
-	Kitchen.o Bedroom.o Attic.o ZombieGame.o
+ZombieGameTest: $(OBJS) 
 	$(CXX) $^ -o ZombieGameTest
 
+./%.o: ./%.$(SRCEXT) ./%.$(INCEXT)                    
+	@echo " $(CXX) $(CXXFLAGS) -c -o $@ $<"; $(CXX) $(CXXFLAGS) -c -o $@ $<           
 
+SpaceTest: Space.o General.o Attic.o Player.o ./test/SpaceTest.o Kitchen.o\
+	Bedroom.o Menu.o IntegerValidation.o
+	$(CXX) $^ -o SpaceTest
 
-
-
-$(OBJS): $(SRCS) $(INCS)
-	$(CXX) $(CXXFLAGS) -c $(@:.o=.$(SRCEXT))
-
-
-
+./test/SpaceTest.o: ./test/SpaceTest.cpp
+	$(CXX) $(CXXFLAGS) -c -o ./test/SpaceTest.o ./test/SpaceTest.cpp
 
 .PHONY: clean
 clean:
-	rm *.o ZombieGame SpaceTest PlayerTest
+	rm *.o ZombieGame SpaceTest PlayerTest ZombieGameTest
 
 	
 

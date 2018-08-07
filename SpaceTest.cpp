@@ -16,6 +16,10 @@ int main()
     std::cout << "player has health? " << testPlayer.hasItem(Player::HEALTH) <<
         std::endl;
 
+    testPlayer.removeItem(Player::KNIFE);
+    std::cout << "player has knife? " << testPlayer.hasItem(Player::KNIFE) <<
+        std::endl;
+
 
 
     return 0;

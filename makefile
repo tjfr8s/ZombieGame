@@ -18,7 +18,7 @@ ZombieGame: $(OBJS)
 	$(CXX) $^ -o ZombieGame
 
 SpaceTest: Space.o Player.o SpaceTest.o General.o Menu.o IntegerValidation.o \
-	Kitchen.o Bedroom.o
+	Kitchen.o Bedroom.o Attic.o
 	$(CXX) $^ -o SpaceTest
 
 

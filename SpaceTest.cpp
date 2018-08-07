@@ -3,6 +3,7 @@
 #include "General.hpp"
 #include "Kitchen.hpp"
 #include "Bedroom.hpp"
+#include "Attic.hpp"
 
 int main()
 {
@@ -102,6 +103,21 @@ int main()
     std::cout << "testPlayer has health? " << 
         testPlayer.hasItem(Player::HEALTH) << std::endl;
 
+
+    std::cout << "\n\nAttic test 1 **************************\n\n";
+    Attic spaceA(false, false, nullptr, nullptr, nullptr, 
+            nullptr);
+
+    testPlayer.removeItem(Player::CURE);
+    testPlayer.setIsDead(false);
+
+    std::cout << "testPlayer has the cure? " << 
+        testPlayer.hasItem(Player::CURE) << std::endl;
+
+    spaceA.action(&testPlayer);
+
+    std::cout << "testPlayer has the cure? " << 
+        testPlayer.hasItem(Player::CURE) << std::endl;
 
 
     return 0;

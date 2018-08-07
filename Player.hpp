@@ -1,6 +1,7 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 #include <vector>
+#include <algorithm>
 #include <iostream>
 
 class Player

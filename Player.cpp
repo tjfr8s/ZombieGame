@@ -26,21 +26,24 @@ bool Player::hasItem(Player::ItemType item)
 {
     bool hasItem(false);
     int count = 0;
-    while(hasItem == false && count < static_cast<int>(m_bag.size()))
+    auto found = find(m_bag.begin(), m_bag.end(), item);
+    if(found != m_bag.end())
     {
-        if(m_bag[count] == item)
-        {
-            hasItem = true;
-        }
-        else
-        {
-            hasItem = false; 
-        }
-        count++;
+        hasItem = true;
+    }
+    else
+    {
+        hasItem = false;
     }
     return hasItem;
 }
 
 void Player::removeItem(ItemType item)
-{}
+{
+    auto found = find(m_bag.begin(), m_bag.end(), item);
+    if(found != m_bag.end())
+    {
+        m_bag.erase(found);
+    }
+}
 

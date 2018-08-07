@@ -23,6 +23,7 @@ public:
     void addItem(ItemType item);
     bool hasItem(ItemType item);
     void removeItem(ItemType item);
+    void setIsDead(bool isDead){m_isDead = isDead;}
 private:
     int m_health;
     std::vector<ItemType> m_bag;

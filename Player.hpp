@@ -12,7 +12,7 @@ public:
         KNIFE,
         KEY,
         HEALTH,
-        ANTIDOTE,
+        CURE,
         EMPTY
     };
 

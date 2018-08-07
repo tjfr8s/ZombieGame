@@ -6,7 +6,7 @@ Bedroom::Bedroom(bool hasZombie,
                   Space* down,
                   Space* left,
                   Space* right):
-    Space("Bedroom", hasZombie, isLocked, Player::HEALTH, up, down, left, right) 
+    Space("Bedroom", hasZombie, isLocked, Player::KEY, up, down, left, right) 
 {
 }
 
@@ -19,9 +19,9 @@ void Bedroom::action(Player* player)
     while(choice != 1)
     {
         // Add menu options based on status of Bedroom object.
-        if(m_item == Player::HEALTH)
+        if(m_item == Player::KEY)
         {
-            options.push_back("Pick up health");
+            options.push_back("Pick up key");
         }
 
         choice = getMenu(options);
@@ -31,7 +31,7 @@ void Bedroom::action(Player* player)
             case 1:
                 break;
             case 2:
-                player->addItem(Player::HEALTH);
+                player->addItem(Player::KEY);
                 m_item = Player::EMPTY;        
                 break;
         }

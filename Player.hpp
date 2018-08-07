@@ -19,6 +19,9 @@ public:
     Player(int health);
     ~Player();
     void die();
+    void takeDamage();
+    int getHealth() {return m_health;}
+    void addHealth(int health);
     bool isDead();
     void addItem(ItemType item);
     bool hasItem(ItemType item);

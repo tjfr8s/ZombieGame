@@ -12,8 +12,22 @@ void Player::die()
     m_isDead = true;
 }
 
+void Player::addHealth(int health)
+{
+    m_health += health;
+}
+
+void Player::takeDamage()
+{
+    m_health -= 1;
+}
+
 bool Player::isDead()
 {
+    if(m_health <= 0)
+    {
+        m_isDead = true;
+    }
     return m_isDead;
 }
 

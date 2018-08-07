@@ -21,9 +21,9 @@ void General::action(Player* player)
     while(choice != 1)
     {
         // Add menu options based on status of Kitchen object.
-        if(m_item == Player::KEY)
+        if(m_item == Player::HEALTH)
         {
-            options.push_back("Pick up key");
+            options.push_back("Pick up health");
         }
 
         choice = getMenu(options);
@@ -33,8 +33,7 @@ void General::action(Player* player)
             case 1:
                 break;
             case 2:
-                player->addItem(Player::KEY);
-                m_item = Player::EMPTY;        
+                player->addHealth(2);
                 break;
         }
         // Remove all options accept for leave 

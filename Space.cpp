@@ -18,6 +18,7 @@ Space::Space(std::string name,
              Space* right):
     m_name(name),
     m_hasZombie(hasZombie),
+    m_isLocked(isLocked),
     m_item(item),
     m_up(up),
     m_down(down),

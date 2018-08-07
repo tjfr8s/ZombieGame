@@ -3,9 +3,6 @@
 int main()
 {
     ZombieGame game;
-    for(int i = 0; i < 5; i++)
-    {
-        game.takeTurn();
-    }
+    game.playGame();
     return 0;
 }

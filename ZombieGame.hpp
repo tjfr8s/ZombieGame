@@ -19,6 +19,7 @@ private:
 public:
     ZombieGame();
     ~ZombieGame();
+    void playGame();
     void movePlayer();
     void takeTurn();
 

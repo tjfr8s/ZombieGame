@@ -54,6 +54,7 @@ public:
     Space* getLeft() {return m_left;}
     Space* getRight() {return m_right;}
     bool hasZombie() {return m_hasZombie;}
+    bool isLocked() {return m_isLocked;}
     std::string getName() {return m_name;}
 
 

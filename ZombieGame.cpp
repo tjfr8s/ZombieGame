@@ -1,5 +1,5 @@
 #include "ZombieGame.hpp"
- ZombieGame::ZombieGame(): m_playerSpace(nullptr), m_player(5)
+ ZombieGame::ZombieGame(): m_playerSpace(nullptr), m_player(7)
 {
     m_start = new General("Entrance",
                           false,
@@ -40,7 +40,7 @@
     branch = new General("Stairs",
                           true,
                           false,
-                          Player::KEY,
+                          Player::HEALTH,
                           nullptr,
                           root,
                           nullptr,
@@ -117,13 +117,13 @@ void ZombieGame::movePlayer()
     {
         options.push_back("Just a wall here.");
     }
-    std::cout << "\nWhere would you like to go? \n";
     bool moved(false);
     int choice(0);
     
     
-    while(moved == false)
+    while(moved == false && !m_player.hasItem(Player::CURE))
     {
+        std::cout << "\nWhere would you like to go? \n";
         choice = getMenu(options);
         
         switch(choice)
@@ -131,38 +131,100 @@ void ZombieGame::movePlayer()
             case 1:
                 if(m_playerSpace->getUp() != nullptr)
                 {
-                    m_playerSpace = m_playerSpace->getUp();
-                    moved = true;
+                    if(m_playerSpace->getUp()->isLocked() && !m_player.hasItem(Player::KEY))
+                    {
+                        std::cout << "The door is locked\n";
+                    }
+                    else
+                    {
+                        m_playerSpace = m_playerSpace->getUp();
+                        moved = true;
+                    }
                 }
                 break;
             case 2:
                 if(m_playerSpace->getDown() != nullptr)
                 {
-                    m_playerSpace = m_playerSpace->getDown();
-                    moved = true;
+                    if(m_playerSpace->getDown()->isLocked() && !m_player.hasItem(Player::KEY))
+                    {
+                        std::cout << "The door is locked\n";
+                    }
+                    else
+                    {
+                        m_playerSpace = m_playerSpace->getDown();
+                        moved = true;
+                    }
                 }
                 break;
             case 3:
                 if(m_playerSpace->getLeft() != nullptr)
                 {
-                    m_playerSpace = m_playerSpace->getLeft();
-                    moved = true;
+                    if(m_playerSpace->getLeft()->isLocked() && !m_player.hasItem(Player::KEY))
+                    {
+                        std::cout << "The door is locked\n";
+                    }
+                    else
+                    {
+                        m_playerSpace = m_playerSpace->getLeft();
+                        moved = true;
+                    }
                 }
                 break;
             case 4:
                 if(m_playerSpace->getRight() != nullptr)
                 {
-                    m_playerSpace = m_playerSpace->getRight();
-                    moved = true;
+                    if(m_playerSpace->getRight()->isLocked() && !m_player.hasItem(Player::KEY))
+                    {
+                        std::cout << "The door is locked\n";
+                    }
+                    else
+                    {
+                        m_playerSpace = m_playerSpace->getRight();
+                        moved = true;
+                    }
                 }
                 break;
         }
+    }
+    if(!m_player.hasItem(Player::CURE))
+    {
+        m_player.takeDamage();
+    }
+}
+
+void ZombieGame::playGame()
+{
+    while(!m_player.isDead() && !m_player.hasItem(Player::CURE))
+    {
+        takeTurn();
+    }
+
+    if(m_player.isDead())
+    {
+        std::cout << "You died!\n";
+    }
+    else
+    {
+        std::cout << "You survived\n";
     }
 }
 
 
 void ZombieGame::takeTurn()
 {
+    if(m_playerSpace->getUp() != nullptr)
+    {
+        std::cout << m_playerSpace->getUp()->isLocked() << std::endl;
+    }
+    std::cout << "Player health: " << m_player.getHealth() << std::endl;
+    if(m_player.hasItem(Player::KNIFE))
+    {
+        std::cout << "The player has a knife\n";
+    }
+    if(m_player.hasItem(Player::KEY))
+    {
+        std::cout << "The player has a key\n";
+    }
     if(m_playerSpace->hasZombie())
     {
         std::cout << "There's a Zombie in here!\n";
@@ -182,8 +244,11 @@ void ZombieGame::takeTurn()
         std::cout << "This room seems safe...\n";
     } 
 
-    m_playerSpace->action(&m_player);
-    movePlayer();
+    if(!m_player.isDead() && !m_player.hasItem(Player::CURE))
+    {
+        m_playerSpace->action(&m_player);
+        movePlayer();
+    }
 
 
 }

@@ -16,7 +16,7 @@ void Attic::action(Player* player)
     std::vector<std::string> options;
     options.push_back("Leave");
 
-    while(choice != 1)
+    while(choice != 1 && !player->hasItem(Player::CURE))
     {
         // Add menu options based on status of Attic object.
         if(m_item == Player::CURE)

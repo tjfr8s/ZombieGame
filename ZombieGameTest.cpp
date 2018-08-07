@@ -3,7 +3,9 @@
 int main()
 {
     ZombieGame game;
-    game.movePlayer();
-    game.movePlayer();
+    for(int i = 0; i < 5; i++)
+    {
+        game.takeTurn();
+    }
     return 0;
 }

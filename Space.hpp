@@ -18,7 +18,6 @@
 
 class Space
 {
-private:
     std::string m_name;
     bool m_hasZombie;
     bool m_isLocked;
@@ -30,13 +29,13 @@ private:
 
 public:
     Space(std::string name,
-          bool m_hasZombie,
-          bool m_isLocked,
+          bool hasZombie,
+          bool isLocked,
           Player::ItemType item,
-          Space* m_up,
-          Space* m_down,
-          Space* m_left,
-          Space* m_right);
+          Space* up,
+          Space* down,
+          Space* left,
+          Space* right);
 
     virtual ~Space();
     virtual void action(Player* player) = 0;

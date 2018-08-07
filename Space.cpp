@@ -32,5 +32,14 @@ Space::~Space()
 
 void Space::fight(Player* player)
 {
+    if(m_hasZombie && player->hasItem(Player::KNIFE))
+    {
+        m_hasZombie = false;
+        player->removeItem(Player::KNIFE);
+    }
+    else if(m_hasZombie && !player->hasItem(Player::KNIFE))
+    {
+        player->die();
+    }
 }
 

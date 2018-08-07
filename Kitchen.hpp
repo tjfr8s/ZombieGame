@@ -12,8 +12,7 @@ class Kitchen : public Space
 {
 public:
     
-    Kitchen(std::string name,
-          bool hasZombie,
+    Kitchen(bool hasZombie,
           bool isLocked,
           Space* up,
           Space* down,

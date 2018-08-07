@@ -72,7 +72,7 @@ int main()
 
 
     std::cout << "\n\nKitchen test 1 **************************\n\n";
-    Kitchen spaceK("test", false, false, nullptr, nullptr, nullptr, 
+    Kitchen spaceK(false, false, nullptr, nullptr, nullptr, 
             nullptr);
 
     testPlayer.removeItem(Player::KNIFE);

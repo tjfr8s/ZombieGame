@@ -1,13 +1,12 @@
 #include "Kitchen.hpp"
 
-Kitchen::Kitchen(std::string name,
-                  bool hasZombie,
+Kitchen::Kitchen(bool hasZombie,
                   bool isLocked,
                   Space* up,
                   Space* down,
                   Space* left,
                   Space* right):
-    Space(name, hasZombie, isLocked, Player::KNIFE, up, down, left, right) 
+    Space("Kitchen", hasZombie, isLocked, Player::KNIFE, up, down, left, right) 
 {
 }
 

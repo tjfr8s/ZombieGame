@@ -2,6 +2,7 @@
 #include "Player.hpp"
 #include "General.hpp"
 #include "Kitchen.hpp"
+#include "Bedroom.hpp"
 
 int main()
 {
@@ -70,7 +71,7 @@ int main()
         testPlayer.hasItem(Player::KEY) << std::endl;
 
 
-    std::cout << "\n\nZombie test 1 **************************\n\n";
+    std::cout << "\n\nKitchen test 1 **************************\n\n";
     Kitchen spaceK("test", false, false, nullptr, nullptr, nullptr, 
             nullptr);
 
@@ -84,6 +85,24 @@ int main()
 
     std::cout << "testPlayer has knife? " << 
         testPlayer.hasItem(Player::KNIFE) << std::endl;
+
+
+    std::cout << "\n\nBedroom test 1 **************************\n\n";
+    Bedroom spaceB(false, false, nullptr, nullptr, nullptr, 
+            nullptr);
+
+    testPlayer.removeItem(Player::HEALTH);
+    testPlayer.setIsDead(false);
+
+    std::cout << "testPlayer has health? " << 
+        testPlayer.hasItem(Player::HEALTH) << std::endl;
+
+    spaceB.action(&testPlayer);
+
+    std::cout << "testPlayer has health? " << 
+        testPlayer.hasItem(Player::HEALTH) << std::endl;
+
+
 
     return 0;
 }

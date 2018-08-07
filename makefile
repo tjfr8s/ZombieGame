@@ -21,6 +21,10 @@ SpaceTest: Space.o Player.o SpaceTest.o General.o Menu.o IntegerValidation.o \
 	Kitchen.o Bedroom.o Attic.o
 	$(CXX) $^ -o SpaceTest
 
+ZombieGameTest: Space.o Player.o ZombieGameTest.o General.o Menu.o IntegerValidation.o \
+	Kitchen.o Bedroom.o Attic.o ZombieGame.o
+	$(CXX) $^ -o ZombieGameTest
+
 
 
 

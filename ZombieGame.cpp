@@ -194,6 +194,16 @@ void ZombieGame::movePlayer()
 
 void ZombieGame::playGame()
 {
+    std::cout << 
+        "******************************************************************\n"<<
+        "A mansion looms in front of you. A zombie has bitten you \n"
+        "and you need the antidote, which you know is in the mansion’s \n"
+        "attic. Make your way to the attic in order to survive. There may \n"
+        "be zombies along the way. Engaging them without the proper equipment\n"
+        " means certain death. Your health is low, so you may need to a boost\n"
+        "to complete the journey.\n" << 
+        "******************************************************************\n"<<
+        std::endl;
     while(!m_player.isDead() && !m_player.hasItem(Player::CURE))
     {
         takeTurn();
@@ -205,7 +215,7 @@ void ZombieGame::playGame()
     }
     else
     {
-        std::cout << "You survived\n";
+        std::cout << "You survived! You win!\n";
     }
 }
 

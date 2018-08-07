@@ -34,6 +34,7 @@ void General::action(Player* player)
                 break;
             case 2:
                 player->addHealth(2);
+                m_item = Player::EMPTY;
                 break;
         }
         // Remove all options accept for leave 

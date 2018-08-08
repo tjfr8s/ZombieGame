@@ -1,5 +1,15 @@
+/*******************************************************************************
+ * Author: Tyler Freitas
+ * Date: 08/05/2018
+ * Description: This class describes an General Space. A General space can 
+ * contain health, which the player can use to heal themselves. It has an 
+ * action  member function for handling player interaction with the room. 
+*******************************************************************************/ 
 #include "General.hpp"
-
+/*******************************************************************************
+ * Description: This constructor takes arguments for hasZombie, isLocked, up
+ * down, left, right, name, and item  and passes them to the Space constructor. 
+*******************************************************************************/ 
 General::General(std::string name,
                   bool hasZombie,
                   bool isLocked,
@@ -12,6 +22,12 @@ General::General(std::string name,
 {
 }
 
+
+/*******************************************************************************
+ * Description: This function allows the player to interact with the General 
+ * space. It prints a menu that give the player the option of leaving the 
+ * Space or picking up the item in the space (if there is one there).
+*******************************************************************************/ 
 void General::action(Player* player)
 {
     int choice(0);
@@ -28,6 +44,9 @@ void General::action(Player* player)
 
         choice = getMenu(options);
 
+        // If the player chooses to leave, do nothing. If they choose
+        // to pick up the Health, add it to the player's inventory and remove
+        // it from the room.
         switch(choice)
         {
             case 1:

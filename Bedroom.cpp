@@ -1,5 +1,18 @@
+/*******************************************************************************
+ * Author: Tyler Freitas
+ * Date: 08/05/2018
+ * Description: This class describes an Bedroom Space. The Bedroom space 
+ * contians the Key, which the player needs to unlock the attic. It has an 
+ * action  member function for handling player interaction with the room. 
+*******************************************************************************/ 
 #include "Bedroom.hpp"
 
+/*******************************************************************************
+ * Description: This constructor takes arguments for hasZombie, isLocked, up
+ * down, left, and right and passes them to the Space constructor. It also
+ * passes "Bedroom" as the value for name and Player::KEY as the value for
+ * item.
+*******************************************************************************/ 
 Bedroom::Bedroom(bool hasZombie,
                   bool isLocked,
                   Space* up,
@@ -10,6 +23,12 @@ Bedroom::Bedroom(bool hasZombie,
 {
 }
 
+
+/*******************************************************************************
+ * Description: This function allows the player to interact with the Bedroom 
+ * space. It prints a menu that give the player the option of leaving the 
+ * Space or picking up the item in the space. 
+*******************************************************************************/ 
 void Bedroom::action(Player* player)
 {
     int choice(0);
@@ -26,6 +45,9 @@ void Bedroom::action(Player* player)
 
         choice = getMenu(options);
 
+        // If the player chooses to leave, do nothing. If they choose
+        // to pick up the Key, add it to the player's inventory and remove
+        // it from the room.
         switch(choice)
         {
             case 1:

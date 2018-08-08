@@ -1,5 +1,17 @@
+/*******************************************************************************
+ * Author: Tyler Freitas
+ * Date: 08/05/2018
+ * Description: This class describes an Kitchen Space. A Kitchen space can 
+ * contain a knife, which the player can use to fight a zombie. It has an 
+ * action  member function for handling player interaction with the room. 
+*******************************************************************************/ 
 #include "Kitchen.hpp"
-
+/*******************************************************************************
+ * Description: This constructor takes arguments for hasZombie, isLocked, up
+ * down, left, and right and passes them to the Space constructor. It also
+ * passes "Kitchen" as the value for name and Player::KNIFE as the value for
+ * item.
+*******************************************************************************/ 
 Kitchen::Kitchen(bool hasZombie,
                   bool isLocked,
                   Space* up,
@@ -10,6 +22,12 @@ Kitchen::Kitchen(bool hasZombie,
 {
 }
 
+
+/*******************************************************************************
+ * Description: This function allows the player to interact with the Kitchen 
+ * space. It prints a menu that give the player the option of leaving the 
+ * Space or picking up the item in the space. 
+*******************************************************************************/ 
 void Kitchen::action(Player* player)
 {
     int choice(0);
@@ -26,6 +44,9 @@ void Kitchen::action(Player* player)
 
         choice = getMenu(options);
 
+        // If the player chooses to leave, do nothing. If they choose
+        // to pick up the Knife, add it to the player's inventory and remove
+        // it from the room.
         switch(choice)
         {
             case 1:

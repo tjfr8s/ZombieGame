@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Author: Tyler Freitas
+ * Date: 08/05/2018
+ * Description: This class describes an Attic Space. The Attic space contians 
+ * the cure, which the player needs to compelte the game. It has an action 
+ * member function for handling player interaction with the room. 
+*******************************************************************************/ 
 #include "Attic.hpp"
 
 /*******************************************************************************

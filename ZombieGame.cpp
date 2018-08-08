@@ -197,10 +197,10 @@ void ZombieGame::playGame()
     std::cout << 
         "******************************************************************\n"<<
         "A mansion looms in front of you. A zombie has bitten you \n"
-        "and you need the antidote, which you know is in the mansion’s \n"
+        "and you need the cure, which you know is in the mansion’s \n"
         "attic. Make your way to the attic in order to survive. There may \n"
         "be zombies along the way. Engaging them without the proper equipment\n"
-        " means certain death. Your health is low, so you may need to a boost\n"
+        "means certain death. Your health is low, so you may need a boost\n"
         "to complete the journey.\n" << 
         "******************************************************************\n"<<
         std::endl;
@@ -222,10 +222,8 @@ void ZombieGame::playGame()
 
 void ZombieGame::takeTurn()
 {
-    if(m_playerSpace->getUp() != nullptr)
-    {
-        std::cout << m_playerSpace->getUp()->isLocked() << std::endl;
-    }
+    bool hasRun(false);
+    std::cout << "Location: " << m_playerSpace->getName() << std::endl;
     std::cout << "Player health: " << m_player.getHealth() << std::endl;
     if(m_player.hasItem(Player::KNIFE))
     {
@@ -238,23 +236,41 @@ void ZombieGame::takeTurn()
     if(m_playerSpace->hasZombie())
     {
         std::cout << "There's a Zombie in here!\n";
-        m_playerSpace->fight(&m_player);
 
-        if(m_player.isDead())
+        std::vector<std::string> options;
+        options.push_back("Run");
+        options.push_back("Fight");
+        int choice = getMenu(options);
+
+        switch(choice)
         {
-            std::cout << "The Zombie killed you!\n";
+            case 1:
+                std::cout << "You ran away.\n";
+                m_playerSpace = m_playerSpace->getDown();
+                m_player.takeDamage();
+                hasRun = true;
+                break;
+            case 2:
+                m_playerSpace->fight(&m_player);
+
+                if(m_player.isDead())
+                {
+                    std::cout << "The Zombie killed you!\n";
+                }
+                else
+                {
+                    std::cout << "You killed the zombie!\n";
+                }
+                break;
         }
-        else
-        {
-            std::cout << "You killed the zombie!\n";
-        }
+
     }
     else
     {
         std::cout << "This room seems safe...\n";
     } 
 
-    if(!m_player.isDead() && !m_player.hasItem(Player::CURE))
+    if(!m_player.isDead() && !m_player.hasItem(Player::CURE) && !hasRun)
     {
         m_playerSpace->action(&m_player);
         movePlayer();

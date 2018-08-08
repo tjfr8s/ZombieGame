@@ -1,5 +1,11 @@
 #include "Attic.hpp"
 
+/*******************************************************************************
+ * Description: This constructor takes arguments for hasZombie, isLocked, up
+ * down, left, and right and passes them to the Space constructor. It also
+ * passes "Attic" as the value for name and Player::CURE as the value for
+ * item.
+*******************************************************************************/ 
 Attic::Attic(bool hasZombie,
                   bool isLocked,
                   Space* up,
@@ -10,6 +16,12 @@ Attic::Attic(bool hasZombie,
 {
 }
 
+
+/*******************************************************************************
+ * Description: This function allows the player to interact with the Attic 
+ * space. It prints a menu that give the player the option of leaving the 
+ * Space or picking up the item in the space. 
+*******************************************************************************/ 
 void Attic::action(Player* player)
 {
     int choice(0);
@@ -26,6 +38,9 @@ void Attic::action(Player* player)
 
         choice = getMenu(options);
 
+        // If the player chooses to leave, do nothing. If they chose to pick
+        // up the cure, add the cure to the player's inventory and remove
+        // it from the room.
         switch(choice)
         {
             case 1:
@@ -35,6 +50,7 @@ void Attic::action(Player* player)
                 m_item = Player::EMPTY;        
                 break;
         }
+
         // Remove all options accept for leave 
         for(int i = 0; i < static_cast<int>(options.size() - 1); i++)
         {

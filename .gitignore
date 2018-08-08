@@ -1,4 +1,5 @@
 *.o
 SpaceTest
 ZombieGame
+ZombieGameTest
 *.swp

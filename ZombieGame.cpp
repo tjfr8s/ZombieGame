@@ -211,11 +211,11 @@ void ZombieGame::playGame()
 
     if(m_player.isDead())
     {
-        std::cout << "You died!\n";
+        std::cout << "You died!\n\n";
     }
     else
     {
-        std::cout << "You survived! You win!\n";
+        std::cout << "You survived! You win!\n\n";
     }
 }
 
@@ -223,7 +223,8 @@ void ZombieGame::playGame()
 void ZombieGame::takeTurn()
 {
     bool hasRun(false);
-    std::cout << "Location: " << m_playerSpace->getName() << std::endl;
+    std::cout << "--Location: " << m_playerSpace->getName() << 
+        "--" << std::endl;
     std::cout << "Player health: " << m_player.getHealth() << std::endl;
     if(m_player.hasItem(Player::KNIFE))
     {

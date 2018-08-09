@@ -1,4 +1,15 @@
+/*******************************************************************************
+ * Author: Tyler Freitas
+ * Date: 08/07/2018
+ * Description: This class descries a ZombieGame. It has a constructor that
+ * sets up the board, a destructor that tears it down, and member functions for 
+ * playing the game, moving the player and taking a turn.
+*******************************************************************************/ 
 #include "ZombieGame.hpp"
+/*******************************************************************************
+ * Description: This constructor creates the game environment by dynamically 
+ * allocating spaces and linking them using their Space* data members. 
+*******************************************************************************/ 
  ZombieGame::ZombieGame(): m_playerSpace(nullptr), m_player(7)
 {
     m_start = new General("Entrance",
@@ -63,6 +74,11 @@
 }
 
 
+/*******************************************************************************
+ * Description: This destructor is responsible for tearing down the dynamically 
+ * allocated game board. It traverses the board using the Space* data members
+ * of each space and deallocates each space on the board.
+*******************************************************************************/ 
 ZombieGame::~ZombieGame()
 {
     Space* root = m_start->getUp();
@@ -81,8 +97,15 @@ ZombieGame::~ZombieGame()
 }
 
 
+/*******************************************************************************
+ * Description: This function handles player movement. It builds a menu of
+ * movement options based on the links that the player's space has. It then lets
+ * the player choose a direction to move. If the door is locked, they player
+ * must have a key to access the room.
+*******************************************************************************/ 
 void ZombieGame::movePlayer()
 {
+    // Build menu of movement options.
     std::vector<std::string> options;    
     std::string next;
     if(m_playerSpace->getUp() != nullptr)
@@ -121,6 +144,7 @@ void ZombieGame::movePlayer()
     int choice(0);
     
     
+    // Get the user's movement choice and execute it.
     while(moved == false && !m_player.hasItem(Player::CURE))
     {
         std::cout << "\nWhere would you like to go? \n";
@@ -192,6 +216,12 @@ void ZombieGame::movePlayer()
     }
 }
 
+
+/*******************************************************************************
+ * Description: This function handles playing the ZombieGame. It prints 
+ * instructions for the user and repeatedly letts them take turns until they
+ * win or they die.
+*******************************************************************************/ 
 void ZombieGame::playGame()
 {
     std::cout << 
@@ -220,9 +250,17 @@ void ZombieGame::playGame()
 }
 
 
+/*******************************************************************************
+ * Description: This function simulates each turn of the game. It prints
+ * the player's location, health, and items. If there is a zombie in the space
+ * the player is given the option to fight or run. Once any zombies are defeated
+ * and the player is in the room, they are given the option to interact with 
+ * items in the room, or to leave the room.  
+*******************************************************************************/ 
 void ZombieGame::takeTurn()
 {
     bool hasRun(false);
+    // Display information about the player and their location
     std::cout << "--Location: " << m_playerSpace->getName() << 
         "--" << std::endl;
     std::cout << "Player health: " << m_player.getHealth() << std::endl;
@@ -234,6 +272,8 @@ void ZombieGame::takeTurn()
     {
         std::cout << "The player has a key\n";
     }
+
+    // Resolve battle if zombie is present.
     if(m_playerSpace->hasZombie())
     {
         std::cout << "There's a Zombie in here!\n";

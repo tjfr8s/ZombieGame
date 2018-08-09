@@ -29,6 +29,10 @@ protected:
     Space* m_right;
 
 public:
+/*******************************************************************************
+ * Description: Takes parameters for name, hasZombie, isLocked, item, up, down,
+ * left, right and initializes member variables to those values
+*******************************************************************************/ 
     Space(std::string name,
           bool hasZombie,
           bool isLocked,
@@ -39,7 +43,15 @@ public:
           Space* right);
 
     virtual ~Space();
+
+
     virtual void action(Player* player) = 0;
+
+
+/*******************************************************************************
+ * Description: If the player has a knife, they kill the zombie and the knife 
+ * breaks. If they don't have a knife, they die.
+*******************************************************************************/ 
     virtual void fight(Player* player);
 
     void setUp(Space* up) {m_up = up;}

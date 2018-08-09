@@ -8,6 +8,10 @@
  * with the space.
 *******************************************************************************/ 
 #include "Space.hpp"
+/*******************************************************************************
+ * Description: Takes parameters for name, hasZombie, isLocked, item, up, down,
+ * left, right and initializes member variables to those values
+*******************************************************************************/ 
 Space::Space(std::string name,
              bool hasZombie,
              bool isLocked,
@@ -31,6 +35,10 @@ Space::~Space()
 {
 }
 
+/*******************************************************************************
+ * Description: If the player has a knife, they kill the zombie and the knife 
+ * breaks. If they don't have a knife, they die.
+*******************************************************************************/ 
 void Space::fight(Player* player)
 {
     if(m_hasZombie && player->hasItem(Player::KNIFE))
